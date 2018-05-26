@@ -12,6 +12,12 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { HeroLoginComponent } from './hero-login/hero-login.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material.module';
+import {ReactiveFormsModule} from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -20,20 +26,25 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    HeroLoginComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MaterialModule,
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
 // Remove it when a real server is ready to receive requests.
   HttpClientInMemoryWebApiModule.forRoot(
   InMemoryDataService, { dataEncapsulation: false }
-  ],
+  )],
   providers: [HeroService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }

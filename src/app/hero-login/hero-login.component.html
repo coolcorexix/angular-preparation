@@ -1,0 +1,16 @@
+
+  <div >
+    <form class="centered">
+      <mat-form-field class="example-full-width">
+        <input #usrNameInput matInput placeholder="UserName" [formControl] = "userFormControl" [errorStateMatcher]="matcher">
+        <mat-hint>The username is 'superuser'</mat-hint>
+        <mat-error *ngIf="userFormControl.hasError('required')">
+          Please fill in <strong> the input </strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <br/>
+    <div class="centered">
+      <button  mat-raised-button (click)="checkAuth(usrNameInput.value)">Log In</button>
+    </div>
+  </div>

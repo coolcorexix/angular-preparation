@@ -1,13 +1,6 @@
-
-<ul class = 'heroes'>
-
-  <li [class.selected]="hero===selectedHero" *ngFor="let hero of heroes">
-    <a routerLink='/details/{{hero.id}}'>
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button (click)='delete(hero);'>x</button>
-  </li>
-</ul>
+<nav>
+  <a routerLink="/heroes">Heroes</a><span><a routerLink="/dashboard">Dashboard</a></span>
+</nav>
 <div>
   <label>Hero's name:
     <input #heroName />
@@ -15,4 +8,23 @@
   <button (click)="add(heroName.value); heroName.value='';">
     add
   </button>
+</div>
+<div>
+  <mat-card *ngFor="let hero of heroes" class="hero-card">
+    <a routerLink='/details/{{hero.id}}'>
+      <mat-card-header>
+        <img mat-card-avatar src={{hero.imgURL}} class="avatar-card"/>
+        <mat-card-title>{{hero.name}}
+
+        </mat-card-title>
+        <mat-card-subtitle>Part-time Hero</mat-card-subtitle>
+      </mat-card-header>
+    </a>
+    <mat-divider></mat-divider>
+    <img mat-card-image src={{hero.imgURL}}/>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">LIKE</button>
+      <button mat-raised-button color="accent">SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

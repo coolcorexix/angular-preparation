@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import Hero from '../hero';
 import {HeroService} from '../hero.service';
+import {heroServiceProvider} from '../hero.service.provider';
 
 @Component({
   selector: 'app-dashboard',
+  providers:[heroServiceProvider],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })

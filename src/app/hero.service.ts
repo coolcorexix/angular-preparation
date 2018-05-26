@@ -9,6 +9,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 export class HeroService {
   private heroesUrl = 'api/heroes';//URL to web API
   getHeroes(): Observable<Hero[]>{
+    console.log(`user ${this.isAuthorized}`);
     this.messageService.add("fetched heroes");
     return this.http.get<Hero[]>(this.heroesUrl).pipe(tap(heroes=>console.log("heroes fetched!!")),catchError(this.handleError('getHeroes', [])));
   }
@@ -20,7 +21,7 @@ export class HeroService {
 
     }
   }
-  const httpOptions={
+  httpOptions={
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
   /**POST: add a new hero to server **/
@@ -62,5 +63,5 @@ searchHeroes(term: string): Observable<Hero[]> {
 
 
   }
-  constructor(private http:HttpClient, private messageService: MessageService) { }
+  constructor(private http:HttpClient, private messageService: MessageService, private isAuthorized: boolean) { }
 }
