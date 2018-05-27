@@ -15,6 +15,14 @@ const routeAuth: Routes =[
 ]
 const routes: Routes = [
   {
+    path:'customers',
+      loadChildren: './customers/customers.module#CustomersModule'
+  },
+  {
+    path: 'orders',
+    loadChildren: './orders/orders.module#OrdersModule'
+  },
+  {
     path:'',
     canActivate: [AuthGuardService],
     children:[

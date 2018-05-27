@@ -21,8 +21,7 @@ export class UsernameErrorStateMatcher implements ErrorStateMatcher{
   styleUrls: ['./hero-login.component.css']
 })
 export class HeroLoginComponent implements OnInit {
-  stateCtrl: FormControl;
-  filteredStates: Observable<any[]>;
+
   userFormControl = new FormControl('superuser',[
     Validators.required
   ]);
@@ -40,17 +39,10 @@ export class HeroLoginComponent implements OnInit {
 
   }
   constructor(private userService: UserService, private router: Router) {
-    this.stateCtrl = new FormControl();
-    this.filteredStates = this.stateCtrl.valueChanges
-                        .pipe(
-                        startWith(''),
-                        map(state => state ? this.filterStates(state) : this.states.slice())
-                        );
+
+
   }
-  filterStates(name: string) {
-  return this.states.filter(state =>
-    state.name.toLowerCase().indexOf(name.toLowerCase()) !== -1)
-  }
+
 
   ngOnInit() {
   }
